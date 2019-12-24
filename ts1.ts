@@ -1,1 +1,0 @@
-var message:string = "hello world"

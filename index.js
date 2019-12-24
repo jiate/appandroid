@@ -6,7 +6,8 @@ var app = express();
 const cors = require("cors")
 const mysql = require("mysql")
 const bodyParser = require('body-parser')
-const router = express.Router();
+const api = require("./api")        
+
 let nodeGet = require("./nodeGet")
 const option={
    host : '172.20.222.230',
@@ -20,7 +21,12 @@ const option={
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}))
-const conn =mysql.createConnection(option);
+// const conn =mysql.createConnection(option);
+const {pool,router,Result}= require('./sqlApi')
+
+let conn;
+// reconn();
+
 
  
  
@@ -48,44 +54,25 @@ http.createServer( function (request, response) {
       }
       response.end();
    });   
-}).listen(8082);
+}).listen(8082,()=>console.log("8082服务启动"));
 app.all("*", function (req, res,next) {
-   conn.query('SELECT * FROM ACT_RU_EXECUTION limit 100,10',(e,r)=>res.json(new Result({data:r})))
-  
-//   res.send('Hello World啊哈');
-   // next();
+   next();
 })
+app.all("/", function (req, res,next) {
+   pool.getConnection((err,conn)=>{
+      res.json({a:'b'})
+      conn.release(); //释放连接池，等待别的连接使用
+   })
+})
+app.use('/api',api)
 
-app.get("/", function (req, res) {
-    console.log( url.parse(req.url).pathname,req.baseUrl)
-    // if(){
-
-    // }
-   res.send('Hello World啊哈');
-})
-app.get('/nihao/*', function (req, res) {
-   conn.query('SELECT * FROM jianfengTest',(e,r)=>res.json(new Result({data:r})))
-    // if(){
-
-    // }
-    
-   res.json("/index.html");
-})
-app.post('/test', function (req, res) {
-   conn.query('SELECT * FROM jianfengTest',(e,r)=>res.json(new Result({data:r})))
-//   return res.json({query:req.query,data:req.params,json:req.body})
-})
- 
-var server = app.listen(8083, function () {
- 
-  var host = server.address().address
-  var port = server.address().port
- 
-  console.log("应用实例，访问地址为 http://%s:%s", host, port)
- 
-})
-function Result({code=1,msg='',data={}}){
-   this.code=1,
-   this.msg='';
-   this.data = data;
-}
+app.listen(8083,()=>console.log("8083服务启动"));
+// function Result({code=1,msg='',data={}}){
+//    this.code=code,
+//    this.msg=msg;
+//    this.data = data;
+// }
+// function reconn(){
+//    conn = mysql.createConnection(option)
+//    conn.on("error",err=>ree.code === "PROTOCOL_CONNECTION_LOST" && setTimeout(reconn,2000);)
+// }
