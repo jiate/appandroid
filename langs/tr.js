@@ -256,5 +256,26 @@ module.exports = {
     NameWatchShown:"Saatte gösterilen isim",
     successfulActivation:"başarıyla kuruldu",
 	activationFailed: "başarısız olarak kuruldu",
-	antiTheft:"hırsızlık önleme işlevi"
+  antiTheft:"hırsızlık önleme işlevi",
+  
+
+systolic :'Sistolik kan basıncı',
+diastolic:'Diyastolik kan basıncı',
+power:'güç',
+pulseRate:'Nabız sayısı',
+oxygenSaturation:'Kan oksijen doygunluğu',
+WeakPerfusion:'Zayıf Perfüzyon İndeksi',
+temperature:'Vücut ısısı',
+healthSettings:'Sağlık ayarları',
+thermometer:'termometre',
+oximeter:'Oksimetre',
+sphygmomanometer:'Tansiyon aleti',
+son:'oğul',
+daughter:'kız',
+spouse:'Karı koca',
+ordinaryAlarm:'Normal alarm',
+takeMedicine:'İlaç al',
+drinkWater:'İçme suyu',
+sedentaryReminder:'Sedanter hatırlatma',
+testReminder:'Test hatırlatıcısı',
 }

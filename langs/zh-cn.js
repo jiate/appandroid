@@ -264,7 +264,28 @@ module.exports = {
 
 
 
-	antiTheft:"防盗功能",
+  antiTheft:"防盗功能",
+
+
+systolic :'收缩压',
+diastolic:'舒张压',
+power:'电量',
+pulseRate:'脉率',
+oxygenSaturation:'血氧饱和度',
+WeakPerfusion:'血流弱灌注指数',
+temperature:'体温',
+healthSettings:'健康设置',
+thermometer:'体温计',
+oximeter:'血氧仪',
+sphygmomanometer:'血压计',
+son:'儿子',
+daughter:'女儿',
+spouse:'夫妻',
+ordinaryAlarm:'普通闹铃',
+takeMedicine:'吃药',
+drinkWater:'喝水',
+sedentaryReminder:'久坐提醒',
+testReminder:'测量提醒',
 
 
 
